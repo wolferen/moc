@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    <%= render template: 'shared/navbar.html.erb' %>
     <% if notice %>
       <div class="alert alert-info" role="alert" id="alert">
         <p class='notice', align='center'><%= notice %></p>

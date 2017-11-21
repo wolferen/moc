@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Yahoo title:</strong>
+  <%= @saved_weather.search_city %>
+</p>
+
+<%= link_to 'Edit', edit_saved_weather_path(@saved_weather) %> |
+<%= link_to 'Back', saved_weathers_path %>
