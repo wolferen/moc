@@ -3,6 +3,7 @@ class SavedWeathersController < ApplicationController
 
   # GET /saved_weathers
   # GET /saved_weathers.json
+
   def index
     # binding.pry
     if params[:thing].present?
@@ -10,7 +11,7 @@ class SavedWeathersController < ApplicationController
       yahoo_response = Weather.lookup_by_location("#{@location}, UA",
                                                   Weather::Units::CELSIUS)
       owm_response = JSON.load(open("http://api.openweathermap.org/data/2.5/weather?q=
-                                      #{@location},UA&units=metric&APPID=92fef38bd079859aea812af22a95f4de"))
+                                    #{@location},UA&units=metric&APPID=92fef38bd079859aea812af22a95f4de"))
       SavedWeather.create!(yahoo_title: yahoo_response.title,
                            yahoo_temp: yahoo_response.condition.temp,
                            yahoo_text: yahoo_response.condition.text,
