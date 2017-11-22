@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
 <div class="field">
-  <%= form_for :thing, method: :get do |f| %>
-    <%= f.text_field :search_city %>
+  <%= form_for SavedWeather.new do |f| %>
+    <%= f.text_field :location %>
     <%= f.submit 'Search' %>
   <% end %>
 </div>
