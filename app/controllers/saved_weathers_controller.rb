@@ -1,12 +1,13 @@
 class SavedWeathersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_saved_weather, only: %i[destroy]
 
   def index
-    @saved_weathers = SavedWeather.display
+    @saved_weathers = current_user.saved_weathers.reversed
   end
 
   def create
-    @saved_weather = SavedWeather.create(saved_weather_params)
+    @saved_weather = current_user.saved_weathers.create(saved_weather_params)
 
     respond_to :js
   end
@@ -21,7 +22,7 @@ class SavedWeathersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_saved_weather
-    @saved_weather = SavedWeather.find(params[:id])
+    @saved_weather = current_user.saved_weathers.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

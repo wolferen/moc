@@ -1,0 +1,18 @@
+.container
+  %h1 Saved Weathers
+  %table#saved_weathers.table
+    %thead.thead-dark
+      %tr
+        %th{scope: 'col'} Yahoo title
+        %th{scope: 'col'} Yahoo text
+        %th{scope: 'col'} Yahoo temp
+        %th{scope: 'col'} owm cloud
+        %th{scope: 'col'} owm min
+        %th{scope: 'col'} owm max
+        %th{colspan: 1}
+    %tbody
+      - if @saved_weathers.present?
+        = render @saved_weathers
+      - else
+        %tr
+          %td Nothing found.

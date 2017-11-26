@@ -1,0 +1,12 @@
+%tr{id: "saved_weather_#{saved_weather.id}"}
+  %td= saved_weather.yahoo_title
+  %td= saved_weather.yahoo_text
+  %td
+    = saved_weather.yahoo_temp
+    degrees
+  %td= saved_weather.owm_cloud
+  %td= saved_weather.owm_min
+  %td= saved_weather.owm_max
+  %td
+    = link_to 'Destroy', saved_weather, class: :delete_weather,
+      method: :delete, 'data-confirm': 'Are you sure?', remote: true

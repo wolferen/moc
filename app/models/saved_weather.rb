@@ -8,9 +8,13 @@ class SavedWeather < ApplicationRecord
 
   attr_accessor :location
 
-  scope :display, -> { order('id DESC') }
+  belongs_to :user
 
-  before_create :get_weather
+  scope :reversed, -> { order('id DESC') }
+
+  validate :location_presence
+
+  before_save :get_weather
 
   private
 
@@ -50,5 +54,9 @@ class SavedWeather < ApplicationRecord
       )
     ).body
     JSON.parse(response)
+  end
+
+  def location_presence
+    errors.add(:location, 'is invalid') unless location.present?
   end
 end

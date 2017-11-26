@@ -1,2 +1,4 @@
-$('#saved_weathers').prepend('<%= j render @saved_weather %>');
-$('form#new_saved_weather input').val("");
+<% if @saved_weather.persisted? %>
+  $('#saved_weathers').prepend('<%= j render @saved_weather %>');
+  $('form#new_saved_weather input').val("");
+<% end %>

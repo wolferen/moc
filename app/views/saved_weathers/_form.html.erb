@@ -1,6 +1,0 @@
-<%= form_for SavedWeather.new, remote: true, id: 'new_search' do |f| %>
-  <div class="field form-inline col-lg-0 text-md-center ">
-    <%= f.text_field :location, placeholder: 'Please input city name', class: 'form-control mr-sm-2' %>
-    <%= f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0' %>
-  </div>
-<% end %>
