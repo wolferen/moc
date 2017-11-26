@@ -1,2 +1,0 @@
-module SavedWeathersHelper
-end

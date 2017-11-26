@@ -2,19 +2,19 @@ class SavedWeathersController < ApplicationController
   before_action :set_saved_weather, only: %i[destroy]
 
   def index
-    @saved_weathers = SavedWeather.all
+    @saved_weathers = SavedWeather.display
   end
 
   def create
     @saved_weather = SavedWeather.create(saved_weather_params)
-    redirect_to action: :index
+
+    respond_to :js
   end
 
   def destroy
     @saved_weather.destroy
-    respond_to do |format|
-      format.html { redirect_to saved_weathers_url, notice: 'Saved weather was successfully destroyed.' }
-    end
+
+    respond_to :js
   end
 
   private

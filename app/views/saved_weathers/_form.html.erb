@@ -1,22 +1,6 @@
-<%= form_with(model: saved_weather, local: true) do |form| %>
-  <% if saved_weather.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(saved_weather.errors.count, "error") %> prohibited this saved_weather from being saved:</h2>
-
-      <ul>
-      <% saved_weather.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :search_city %>
-    <%= form.text_field :search_city %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+<%= form_for SavedWeather.new, remote: true, id: 'new_search' do |f| %>
+  <div class="field form-inline col-lg-0 text-md-center ">
+    <%= f.text_field :location, placeholder: 'Please input city name', class: 'form-control mr-sm-2' %>
+    <%= f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0' %>
   </div>
 <% end %>
