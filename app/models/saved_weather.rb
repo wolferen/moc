@@ -1,8 +1,10 @@
+# frozen_string_literal: false
+
 class SavedWeather < ApplicationRecord
   OPENWEATHER = {
-    domain: "http://api.openweathermap.org",
-    path: "/data/2.5/weather",
-    APPID: "92fef38bd079859aea812af22a95f4de",
+    domain: 'http://api.openweathermap.org',
+    path: '/data/2.5/weather',
+    APPID: '92fef38bd079859aea812af22a95f4de',
     units: :metric
   }.freeze
 
@@ -31,7 +33,7 @@ class SavedWeather < ApplicationRecord
   end
 
   def yahoo_answer
-    Weather.lookup_by_location("#{location}, UA",Weather::Units::CELSIUS)
+    Weather.lookup_by_location("#{location}, UA", Weather::Units::CELSIUS)
   end
 
   def get_openweather
@@ -43,13 +45,13 @@ class SavedWeather < ApplicationRecord
     http_get(OPENWEATHER[:domain], OPENWEATHER[:path], params)
   end
 
-  def http_get(domain,path,params)
+  def http_get(domain, path, params)
     require 'net/http'
     require 'cgi'
     response = Net::HTTP.get_response(
       URI(
         "#{domain}#{path}?".concat(
-          params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.join('&')
+          params.collect { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }.join('&')
         )
       )
     ).body

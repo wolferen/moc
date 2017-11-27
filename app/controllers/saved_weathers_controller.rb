@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class SavedWeathersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_saved_weather, only: %i[destroy]
+  layout false, except: :index
 
   def index
     @saved_weathers = current_user.saved_weathers.reversed
